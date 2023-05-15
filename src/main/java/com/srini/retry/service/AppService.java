@@ -8,6 +8,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * The type App service.
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -17,6 +20,11 @@ public class AppService {
     private final AtomicInteger counter = new AtomicInteger() ;
 
 
+    /**
+     * Get string.
+     *
+     * @return the string
+     */
     @Retry(name = "serviceA", fallbackMethod = "fallbackA")
     public String get(){
         log.info("calling get method {} time(s)", counter.incrementAndGet());
